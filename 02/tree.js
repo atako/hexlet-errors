@@ -42,15 +42,11 @@ class Tree {
     return this.children.size > 0;
   }
 
-  getDeepChild(keys) {
-    if (keys.length === 0) {
-      return null;
-    }
+   getDeepChild(keys) {
     const [key, ...rest] = keys;
     const node = this.getChild(key);
-    if (node === undefined) {
-      return null;
-    } else if (rest.length === 0) {
+
+    if (rest.length === 0 || !node) {
       return node;
     }
     return node.getDeepChild(rest);
